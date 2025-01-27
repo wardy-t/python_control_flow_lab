@@ -218,7 +218,32 @@
 # - Use logical AND, OR, and NOT to check conditions and provide appropriate feedback.
 
 def guess_number():
-    # Your control flow logic goes here
+    guessed_number = 8
+    tries = 5
+    print("Welcome to Coder Hell!")
+    print("Guess the number I'm thinking of or be trapped in an endless vortex of confusing EJS. It's between 1 and 10.")
+    
+    for attempt in range(1, tries + 1):
+        try:
+            guess = int(input(f"Attempt {attempt}/{tries}: Enter your guess: "))
+            
+            if guess == guessed_number:
+                print("You guessed correctly! You are spared...")
+                return  
+            elif guess < guessed_number:
+                if attempt == tries:
+                    print("Guess correctly or get ready for Callback Oblivion! Guess is too low.")
+                else:
+                    print("Guess is too low.")
+            elif guess > guessed_number:
+                if attempt == tries:
+                    print("Say your prayers to Altman! Guess is too high.")
+                else:
+                    print("Guess is too high.")
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
+    
+    print("You failed to guess the number in five attempts. Your soul will now be torn apart by the HTTP cats...")
 
 # Call the function
 guess_number()
